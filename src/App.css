@@ -7,6 +7,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+:root {
+  --primary-color: #ae00cd; 
+}
+
 body {
   background-image: url('/pexels-padrinan-255379.jpg');
   height: 100vh;
@@ -19,9 +23,42 @@ body {
 
 .header {
   background-color: #ffffff78;
-  font-size: 2rem;
-  color: rgb(230, 0, 230);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.logo {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Create a custom label to style */
+.custom-upload-btn {
+  /* display: inline-block; */
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+
+.custom-upload-btn:hover {
+  background-color: #9400af;
+}
+
 
 .main {
   display: flex;
@@ -29,8 +66,17 @@ body {
   gap: 20px;
 }
 
+.file-details > * {
+  padding-block-end: 10px;
+}
+
 .file-details span {
   font-weight: 600;
+  padding-inline-end: 10px;
+}
+
+.file-details h3 {
+  color: var(--primary-color);
 }
 
 .files-container, .folders-container {
@@ -42,7 +88,7 @@ body {
 }
 
 .files-container, .folders-container h1 {
-  color: rgb(230, 0, 230);
+  color: var(--primary-color);
 }
 
 .file-list, .folder-list {
@@ -66,7 +112,10 @@ body {
   width: 130px;
   padding: 5px;
   border-radius: 5px;
-  font-size: 14px;
+}
+
+.file-preview:hover {
+  background-color: #ffffffad;
 }
 
 .file-preview-icon {
@@ -105,4 +154,6 @@ body {
   padding: 9px 0;
   overflow-x: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
 }
