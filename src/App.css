@@ -20,14 +20,32 @@ body {
 .header {
   background-color: #ffffff78;
   font-size: 2rem;
-  color: rgb(207, 22, 207);
+  color: rgb(230, 0, 230);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .file-details span {
   font-weight: 600;
 }
 
-.files-container {
+.files-container, .folders-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+}
+
+.files-container, .folders-container h1 {
+  color: rgb(230, 0, 230);
+}
+
+.file-list, .folder-list {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -84,7 +102,7 @@ body {
 .file-preview-name {
   width: 100%;
   height: 30%;
-  padding: 5px 0;
+  padding: 9px 0;
   overflow-x: hidden;
   text-overflow: ellipsis;
 }

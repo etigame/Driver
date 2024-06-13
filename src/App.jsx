@@ -11,11 +11,11 @@ export default function App() {
   // I can't use Routes because it's not possible to predict the files structure, therefore I use useLocation
   const { pathname } = useLocation()
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/file')
-      .then((res) => setFilesNames(res.data))
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:3000/file')
+  //     .then((res) => setFilesNames(res.data))
+  // }, [])
 
   useEffect(() => {
     // I build the pathname at FilePreview component, in a way that he'll look like the structure in the root/public folder in the server - then I send it with axios request
@@ -44,19 +44,44 @@ export default function App() {
       </form>
 
       {filesNames.length > 0 && ( // if it's a directory
-        <section className="files-container">
-          {filesNames.map((fileName) => (
-            <FilePreview
-              key={fileName}
-              fileName={fileName}
-              pathname={pathname}
-            />
-          ))}
+        <section className="main">
+          <section className="folders-container">
+            <h1>Folders</h1>
+            <section className="folder-list">
+              {filesNames.map((fileName) => {
+                if (!fileName.includes('.'))
+                  return (
+                    <FilePreview
+                      key={fileName}
+                      fileName={fileName}
+                      pathname={pathname}
+                    />
+                  )
+              })}
+            </section>
+          </section>
+
+          <section className="files-container">
+            <h1>Files</h1>
+            <section className="file-list">
+              {filesNames.map((fileName) => {
+                if (fileName.includes('.'))
+                  return (
+                    <FilePreview
+                      key={fileName}
+                      fileName={fileName}
+                      pathname={pathname}
+                    />
+                  )
+              })}
+            </section>
+          </section>
         </section>
       )}
 
-      {Object.keys(fileData).length > 0 && // if it's a single file
-      <FileDetails fileData={fileData} />}
+      {Object.keys(fileData).length > 0 && ( // if it's a single file
+        <FileDetails fileData={fileData} />
+      )}
     </section>
   )
 }
