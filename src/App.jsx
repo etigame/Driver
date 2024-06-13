@@ -30,7 +30,7 @@ export default function App() {
   function handleSubmit(e) {
     e.preventDefault()
     const file = new FormData(e.target)
-    axios.post('http://localhost:3000/file', file, {
+    axios.post(`http://localhost:3000/file/?path=${pathname}`, file, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
   }
@@ -43,7 +43,7 @@ export default function App() {
         <button type="submit">Upload</button>
       </form>
 
-      {filesNames.length > 0 && (
+      {filesNames.length > 0 && ( // if it's a directory
         <section className="files-container">
           {filesNames.map((fileName) => (
             <FilePreview
@@ -55,7 +55,8 @@ export default function App() {
         </section>
       )}
 
-      {Object.keys(fileData).length > 0 && <FileDetails fileData={fileData} />}
+      {Object.keys(fileData).length > 0 && // if it's a single file
+      <FileDetails fileData={fileData} />}
     </section>
   )
 }
