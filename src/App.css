@@ -4,17 +4,22 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 :root {
-  --primary-color: #ae00cd; 
+  --primary-color: #ae00cd;
 }
 
 body {
   background-image: url('/pexels-padrinan-255379.jpg');
   height: 100vh;
   background-size: cover;
+}
+
+button {
+  cursor: pointer;
+  border: none;
 }
 
 .app-container > * {
@@ -30,16 +35,25 @@ body {
 }
 
 .logo {
+  text-decoration: none;
+  font-weight: 700;
   font-size: 2rem;
   color: var(--primary-color);
 }
 
-input[type="file"] {
+.header-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+input[type='file'] {
   display: none;
 }
 
 /* Create a custom label to style */
-.custom-upload-btn {
+.custom-upload-btn,
+.new-folder-btn, .popup form button {
   /* display: inline-block; */
   padding: 6px 12px;
   cursor: pointer;
@@ -59,6 +73,13 @@ input[type="file"] {
   background-color: #9400af;
 }
 
+.new-folder-btn:hover {
+  background-color: #9400af;
+}
+
+.popup form button:hover {
+  background-color: #9400af;
+}
 
 .main {
   display: flex;
@@ -79,7 +100,8 @@ input[type="file"] {
   color: var(--primary-color);
 }
 
-.files-container, .folders-container {
+.files-container,
+.folders-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,11 +109,13 @@ input[type="file"] {
   gap: 10px;
 }
 
-.files-container, .folders-container h1 {
+.files-container,
+.folders-container h1 {
   color: var(--primary-color);
 }
 
-.file-list, .folder-list {
+.file-list,
+.folder-list {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -145,7 +169,7 @@ input[type="file"] {
   color: #c23d1c;
 }
 .file-preview-icon.jpg {
-  color: #4B9316;
+  color: #4b9316;
 }
 
 .file-preview-name {
@@ -156,4 +180,54 @@ input[type="file"] {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 0.9rem;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.268);
+  transition: all 0.1ms ease-in-out;
+}
+
+.popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.popup form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+}
+
+.popup .close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: inherit;
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.popup .close:hover {
+  color: #000;
+}
+
+.popup form label {
+  font-size: 1.2rem;
+}
+
+.popup form button {
+  align-self: end;
 }
