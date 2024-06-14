@@ -272,6 +272,7 @@ input[type='file'] {
   border-radius: 5px;
   font-size: 0.9rem;
   padding: 15px 60px 15px 15px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .file-actions-tooltip .action {

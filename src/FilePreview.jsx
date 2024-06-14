@@ -14,8 +14,9 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 import { MdOutlineDriveFileRenameOutline } from 'react-icons/md'
 
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
-export default function FilePreview({ fileName, pathname }) {
+export default function FilePreview({ fileName, pathname, fetchFiles }) {
   const [fileType, setFileType] = useState('')
   const [isTooltipShown, setIsTooltipShown] = useState(false)
 
@@ -27,6 +28,12 @@ export default function FilePreview({ fileName, pathname }) {
   const handleFileActions = (e) => {
     e.preventDefault()
     setIsTooltipShown((prev) => !prev)
+  }
+
+  const handleDeleteFile = (e) => {
+    e.preventDefault()
+    axios.delete(`http://localhost:3000/file/?path=${pathname}/${fileName}`).then((res) => fetchFiles())
+    setIsTooltipShown(false)
   }
 
   // I build the pathname in a way that he'll look like the structure in the root/public folder in the server - then I send it with axios
@@ -77,7 +84,7 @@ export default function FilePreview({ fileName, pathname }) {
             </span>
             Rename
           </div>
-          <div className='action'>
+          <div className='action' onClick={handleDeleteFile}>
             <span>
               <FaRegTrashAlt />
             </span>

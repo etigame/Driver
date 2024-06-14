@@ -103,6 +103,7 @@ export default function App() {
                           key={fileName}
                           fileName={fileName}
                           pathname={pathname}
+                          fetchFiles={fetchFiles}
                         />
                       )
                   })}
@@ -119,6 +120,7 @@ export default function App() {
                           key={fileName}
                           fileName={fileName}
                           pathname={pathname}
+                          fetchFiles={fetchFiles}
                         />
                       )
                   })}
