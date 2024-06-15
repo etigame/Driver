@@ -14,6 +14,8 @@
 body {
   background-image: url('/pexels-padrinan-255379.jpg');
   height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -212,6 +214,7 @@ input[type='file'] {
   right: 0;
   background: rgba(0, 0, 0, 0.268);
   transition: all 0.1ms ease-in-out;
+  z-index: 1;
 }
 
 .popup {
@@ -223,6 +226,7 @@ input[type='file'] {
   background: #fff;
   border-radius: 5px;
   width: 30%;
+  z-index: 2;
 }
 
 .popup form {
@@ -261,7 +265,7 @@ input[type='file'] {
 .file-actions-tooltip {
   position: absolute;
   bottom: -131px;
-  right: -173px;
+  right: -150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -271,7 +275,8 @@ input[type='file'] {
   z-index: 1;
   border-radius: 5px;
   font-size: 0.9rem;
-  padding: 15px 60px 15px 15px;
+  padding: 15px;
+  width: 150px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -281,14 +286,24 @@ input[type='file'] {
   justify-content: start;
   align-items: center;
   gap: 10px;
+  width: 100%;
+}
+
+.file-actions-tooltip .action-name {
+  flex-grow: 1;
 }
 
 .file-actions-tooltip > .action:hover {
   color: var(--primary-color);
 }
 
-.file-actions-tooltip .action span {
+.file-actions-tooltip .action-icon {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1rem;
+}
+
+.file-actions-tooltip .action:last-child span {
+  font-size: 0.9rem;
 }
